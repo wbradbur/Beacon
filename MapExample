@@ -1,0 +1,4 @@
+Intent goToMap = new Intent();
+goToMap.setAction(Intent.ACTION_VIEW);
+Uri loc = Uri.parse( Uri.encode("geo:36.9,-122.1?z=15"));
+goToMap.setData(loc);
