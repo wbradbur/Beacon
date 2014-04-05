@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Beacon</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="Username">Username</string>
+    <string name="Password">Password</string>
+    <string name="RememberMe">Remember Me?</string>
+    <string name="Invalid">Invalid Username or Password</string>
+    <string name="NewUser">New User?</string>
+    <string name="Login">Login</string>
+    
+    
+    
+    
+
+</resources>
