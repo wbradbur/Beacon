@@ -1,0 +1,28 @@
+package com.example.test;
+
+import android.content.Context;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+public class EventListAdapter {
+	
+	ListView eventViews;
+	
+	ArrayAdapter<String> adapter;
+	
+	Context ctx;
+	
+	EventListAdapter(Context context, String[] stringList, ListView eventList)
+	{
+		eventViews = eventList;
+		ctx = context;
+		
+		updateList(stringList);
+	}
+	
+	public void updateList(String[] stringList)
+	{
+		adapter=new ArrayAdapter<String>(ctx, android.R.layout.simple_list_item_1, stringList);
+		eventViews.setAdapter(adapter);
+	}
+}
