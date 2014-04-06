@@ -1,0 +1,16 @@
+try {
+			 
+		     client = new Socket("10.0.2.2", 4444);  //connect to server
+		     printwriter = new PrintWriter(client.getOutputStream(),true);
+		     printwriter.write("WORKS BRUH");  //write the message to output stream
+		 
+		     printwriter.flush();
+		     printwriter.close();
+		     client.close();   //closing the connection
+		 
+		    } catch (UnknownHostException e) {
+		     e.printStackTrace();
+		    } catch (IOException e) {
+		     e.printStackTrace();
+		    }
+		   
