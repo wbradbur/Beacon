@@ -1,0 +1,68 @@
+package com.example.test;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ListView;
+
+public class Beac extends ActionBarActivity 
+{
+	
+	private static AndroidMap map;
+	
+	int numEvents = 20;
+	
+	ListView eventViews;
+	
+	boolean testbool = false;
+	Event[] events = new Event[1];
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) 
+	{
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.postevent);
+
+		map = new AndroidMap(this);
+		events[0] = new Event("event1", 3, map.getLocation());
+		eventViews = (ListView) this.findViewById(R.id.eventList);
+		final EventListAdapter adapter = new EventListAdapter(this, events, eventViews);
+		
+		Button b_NewEvent = (Button) findViewById(R.id.newEventButton);
+	    b_NewEvent.setOnClickListener
+	    (
+	    		new OnClickListener()
+	    		{
+	    			@Override
+	    			public void onClick(View arg)
+	    			{
+	    				testbool = !testbool;
+	    				
+	    				
+	    			}
+	    		});
+	    
+	    eventViews.setClickable(true);
+	    final Activity ctx = this;
+		eventViews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+		  @Override
+		  public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+
+		    String temp = (String)eventViews.getItemAtPosition(position);
+		    for(Event e : events)
+		    {
+		    	if(e.getName() == temp)
+		    		map.pointOnMap(e, ctx);
+		    }
+		  }
+		});
+	}
+	
+	
+	
+}
