@@ -1,62 +1,3 @@
-/*package com.example.beaconv2;
-
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
-
-public class Events extends ActionBarActivity {
-	
-	private static AndroidMap map;
-
-	int maxEvents = 20;
-
-	ListView eventViews;
-
-	Event[] events = new Event[maxEvents];
-	
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_events);
-		map = new AndroidMap(this);
-
-		events[0] = new Event("event1", 3, map.getLocation());
-        
-        
-		eventViews = (ListView) this.findViewById(R.id.eventList);
-		
-		final EventListAdapter adapter = new EventListAdapter(this, events, eventViews, map);
-
-		 final Activity ctx = this;
-			eventViews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-			  @Override
-			  public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-
-			    String temp = (String)eventViews.getItemAtPosition(position);
-			    for(Event e : events)
-			    {
-			    	if(e.getName() == temp)
-			    		map.pointOnMap(e, ctx);
-			    }
-			  }
-			});
-    }
-    
-    public void goCreate(View v){
-    	Intent i = new Intent(this, Create.class);
-    	startActivity(i); 
-    }
-
- 
-
-}*/
-
-
 package com.example.beaconv2;
 
 import android.annotation.SuppressLint;
@@ -76,7 +17,26 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ToggleButton;
 
-public class Events extends ActionBarActivity {
+public class Splash extends ActionBarActivity {
+
+	/*@TargetApi(Build.VERSION_CODES.HONEYCOMB) @SuppressLint("NewApi") @Override
+	protected void onCreate(Bundle savedInstanceState) 
+	{
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_splash_real);
+		if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB)
+		{
+			getActionBar().hide();
+		}
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Intent inte = new Intent(this, Events.class);
+		startActivity(inte);
+	}*/
 	
 	private static AndroidMap map;
 
@@ -88,8 +48,7 @@ public class Events extends ActionBarActivity {
 	private static boolean isCreated = false;
 	private static int eventsSize = 1;
 	
-	
-    @SuppressLint("NewApi") @TargetApi(Build.VERSION_CODES.HONEYCOMB) @Override
+	@SuppressLint("NewApi") @TargetApi(Build.VERSION_CODES.HONEYCOMB) @Override
     protected void onCreate(Bundle savedInstanceState) {
     	
         super.onCreate(savedInstanceState);
@@ -100,23 +59,9 @@ public class Events extends ActionBarActivity {
         {
         	Location loc = new Location(map.getLocation());
         	long time = System.currentTimeMillis();
-        	loc.setLatitude(36.978668);
-        	loc.setLongitude(-122.027211);
-        	events[0] = new Event("Rugby Game", "Simba is better than Fedor", time + 80 * 60 * 1000000,loc);
-        	Location loc2 = new Location(loc);
         	loc.setLatitude(36.99117);
         	loc.setLongitude(-122.051138);
-        	events[1] = new Event("Street performer", "man playing violin", time + 30 * 60 * 1000000,loc2);
-        	Location loc3 = new Location(loc);
-        	loc.setLatitude(36.961212);
-        	loc.setLongitude(-122.052599);
-        	events[2] = new Event("House party", "be there", time + 44 * 60 * 1000000,loc3);
-        	events[3] = new Event("Capture the flag", "meet at the park!", time + 55 * 60 * 1000000,loc);
-        	events[4] = new Event("Pizza eating contest", "Come over", time + 71 * 60 * 1000000,loc);
-        	
-
-        	eventsSize=5;
-        	
+        	events[0] = new Event("Rugby Game", "Simba is better than Fedor", time + 80 * 60 * 1000000,loc);
         	isCreated = true;
         }
 		
@@ -184,7 +129,4 @@ public class Events extends ActionBarActivity {
     	Intent i = new Intent(this, Create.class);
     	startActivity(i); 
     }
-
- 
-
 }

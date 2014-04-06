@@ -14,21 +14,23 @@ public class EventListAdapter {
 	
 	Context ctx;
 	
-	EventListAdapter(Context context, Event[] eventList, ListView eventView)
+	EventListAdapter(Context context, Event[] eventList, ListView eventView, AndroidMap map)
 	{
 		eventViews = eventView;
 		ctx = context;
+		
+		updateList(eventList, map);
+	}
+	
+	public void updateList(Event[] eventList, AndroidMap map)
+	{
 		String[] temp = new String[eventList.length];
 		for(int i = 0; i < eventList.length; i++)
 		{
-			temp[i] = eventList[i].getName();
+			temp[i] = eventList[i].getName() + " " + Float.toString(eventList[i].getDistance(map.getLocation())) + "mi"
+					+"\nTime Left: " + eventList[i].getEndTime().toMinutes()/1000 +" min";
 		}
-		updateList(temp);
-	}
-	
-	public void updateList(String[] stringList)
-	{
-		adapter=new ArrayAdapter<String>(ctx, android.R.layout.simple_list_item_1, stringList);
+		adapter=new ArrayAdapter<String>(ctx, android.R.layout.simple_list_item_1, temp);
 		eventViews.setAdapter(adapter);
 	}
 }

@@ -61,14 +61,14 @@ public class AndroidMap
 	
 	public void pointOnMap(Event e, Activity context)
 	{
-		pointOnMap(e.getLocation(), e.getName(), context);
+		pointOnMap(e.getLocation(), e.getName(), e.getDescription(), EventTime.timeTil(e.getEndTime()).toMinutes(), context);
 	}
 
-	public void pointOnMap(Location location, String description, Activity context)
+	public void pointOnMap(Location location, String name, String description, int minutesLeft, Activity context)
 	{
 		Intent goToMap = new Intent(Intent.ACTION_VIEW,
 				Uri.parse("geo:0,0?q=" + location.getLatitude()+"," +location.getLongitude()
-				+ "(" + description + ")"));
+				+ "(" + name + ": " + description + "     Minutes Left: " + minutesLeft + ")"));
 		context.startActivity(goToMap);
 	}
 }

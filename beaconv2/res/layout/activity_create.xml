@@ -1,18 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/kooltrees" >
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:text="BEACON"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#33cccc" />
+    android:background="@drawable/shattered" >
 
     <Button
         android:id="@+id/add"
@@ -29,12 +18,54 @@
         android:id="@+id/eventName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="100dp"
         android:background="#95ffffff"
         android:ems="10"
-        android:hint="Describe Your Event"
+        android:hint="Name of Event"
         android:textColorHint="#666666" />
+
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/eventName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:background="#95ffffff"
+        android:ems="10"
+        android:hint="Describe the Event"
+        android:lines="4"
+        android:maxLines="4"
+        android:textColorHint="#666666" >
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/timeLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/description"
+        android:layout_below="@+id/description"
+        android:layout_marginTop="44dp"
+        android:background="#95ffffff"
+        android:ems="10"
+        android:hint="Minutes Left (Max 120)"
+        android:textColorHint="#666666" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="BEACON"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#33cccc"
+        android:textSize="40sp" />
 
 </RelativeLayout>

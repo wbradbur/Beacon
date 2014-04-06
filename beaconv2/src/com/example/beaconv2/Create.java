@@ -2,10 +2,8 @@ package com.example.beaconv2;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.location.Location;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -15,36 +13,31 @@ public class Create extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_create);
-	    
+		if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB)
+		{
+			getActionBar().hide();
+		}
 	
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.create, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-	public void goEvents(View v){
-		//Location current = getLocation();
+	
+	public void goEvents(View v)
+	{
 		TextView eName = (TextView) findViewById(R.id.eventName);
 		String eNameString = eName.getText().toString();
-
+		TextView eDesc = (TextView) findViewById(R.id.description);
+		String eDescString = eDesc.getText().toString();
+		TextView eTime = (TextView) findViewById(R.id.timeLeft);
+		int minutes = Integer.parseInt(eTime.getText().toString());
+		if(minutes > 120)
+		{
+			eTime.setBackgroundColor(Color.RED);
+			return;
+		}
+		long timeLeft = minutes * 60 * 1000000;
     	Intent i = new Intent(this, Events.class);
     	i.putExtra("nameOfEvent", eNameString);
+    	i.putExtra("description", eDescString);
+    	i.putExtra("endTime", System.currentTimeMillis() + timeLeft);
     	startActivity(i); 
     }
 

@@ -6,15 +6,18 @@ public class Event {
 	private String name;
 	
 	
-	private long endTime;
+	private EventTime endTime;
 	
 	private Location location;
 	
-	Event(String inName, long inTime, Location inLocation)
+	private String description;
+	
+	Event(String inName, String inDescription, long inTime, Location inLocation)
 	{
 		name = inName;
-		endTime = inTime;
+		endTime = new EventTime(inTime, TimeType.MILLIS);
 		location = inLocation;
+		description = inDescription;
 	}
 	
 	public String getName()
@@ -22,9 +25,14 @@ public class Event {
 		return name;
 	}
 	
-	public long getEndTime()
+	public EventTime getEndTime()
 	{
 		return endTime;
+	}
+	
+	public String getDescription()
+	{
+		return description;
 	}
 	
 	public Location getLocation()
@@ -32,9 +40,18 @@ public class Event {
 		return location;
 	}
 	
+	public void repost()
+	{
+		if(EventTime.timeTil(endTime).toMinutes() < 30)
+			endTime = new EventTime(System.currentTimeMillis() + 30 * 60 * 1000000, TimeType.MILLIS);
+	}
+	
 	public float getDistance(Location inLocation)
 	{
-		return location.distanceTo(inLocation);
+		int dist = (int) (location.distanceTo(inLocation) * 100);
+		float mi = (float) ((int)(.000621 * dist) / 100.0f);
+		return mi;
+		 
 	}
 }
 
