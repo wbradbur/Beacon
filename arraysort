@@ -1,0 +1,18 @@
+public void sortEvents(Event[] eventList, Location userLoc)
+{
+	for (int i = 0; i < eventList.length(); ++i)
+	{
+		Event temp = eventList[i];
+		for (int j = i - 1; j > 0; ++j)
+		{
+			if (temp.getDistance(userLoc) < eventList[j].getDistance(userLoc))
+			{
+				eventList[j+1] = eventList[j];
+				eventList[j] = temp;
+			} else
+			{
+				break;
+			}
+		}
+	}
+}
