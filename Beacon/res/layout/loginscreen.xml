@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.beacon.MainActivity$PlaceholderFragment" >
+    tools:context="com.example.beacon.login" >
 
     <EditText
         android:id="@+id/Username"
@@ -50,40 +50,45 @@
         android:text="@string/Password"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <CheckBox
-        android:id="@+id/rememberMe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/wrong"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="54dp"
-        android:text="@string/RememberMe" />
-
     <TextView
         android:id="@+id/wrong"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/user"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="55dp"
+        android:layout_marginBottom="15dp"
         android:text="@string/Invalid"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <Button
-        android:id="@+id/newUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/PW"
-        android:layout_below="@+id/PW"
-        android:text="@string/NewUser" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ff0000"
+        android:textSize="12sp" />
 
     <Button
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/newUser"
-        android:layout_alignBottom="@+id/newUser"
-        android:layout_alignRight="@+id/rememberMe"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_below="@+id/PW"
+        android:layout_marginTop="41dp"
         android:text="@string/Login" />
+
+    <CheckBox
+        android:id="@+id/rememberMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/PW"
+        android:layout_centerHorizontal="true"
+        android:text="@string/RememberMe" />
+
+    <Button
+        android:id="@+id/newUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:text="@string/NewUser"
+        android:onClick="openReg"
+         />
 
 </RelativeLayout>
